@@ -1,5 +1,5 @@
 🌐 Arnav Chauhan — Portfolio Website
-🔗 Live Site: https://arnav-chauhan-kgpian.github.io/arnavchauhan.github.io
+🔗 Live Site: https://arnav-chauhan-kgpian.github.io/portfolio
 
 (replace with your actual domain)
 
