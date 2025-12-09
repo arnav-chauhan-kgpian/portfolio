@@ -115,7 +115,6 @@
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="nav-link active" onclick="showSection('about', this)">About</a>
                 <a href="#projects" class="nav-link" onclick="showSection('projects', this)">Projects</a>
-                <a href="#blogs" class="nav-link" onclick="showSection('blogs', this)">Blogs</a>
             </div>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-white focus:outline-none">
@@ -126,7 +125,6 @@
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
             <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-700" onclick="showSection('about', this); closeMenu();">About</a>
             <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-700" onclick="showSection('projects', this); closeMenu();">Projects</a>
-            <a href="#blogs" class="block py-2 px-4 text-sm hover:bg-gray-700" onclick="showSection('blogs', this); closeMenu();">Blogs</a>
         </div>
     </header>
 
@@ -349,7 +347,6 @@
 
         // --- Get HTML Elements ---
         const projectsGrid = document.getElementById('projects-grid');
-        const blogsGrid = document.getElementById('blogs-grid');
 
         // --- Initialize Firebase ---
         let db;
@@ -365,14 +362,12 @@
         } catch (e) {
             console.error("Firebase initialization failed. Please check your firebaseConfig.", e);
             if (projectsGrid) projectsGrid.innerHTML = `<p class="text-red-500 text-center col-span-full">Error: Could not connect to the database. Please check the Firebase configuration.</p>`;
-            if (blogsGrid) blogsGrid.innerHTML = `<p class="text-red-500 text-center col-span-full">Error: Could not connect to the database. Please check the Firebase configuration.</p>`;
         }
         
         // --- Fetch and Render Data from Firestore ---
         async function fetchData() {
             if (!db) return;
             await fetchCollection('projects', projectsGrid, renderProjectCard);
-            await fetchCollection('blogs', blogsGrid, renderBlogCard);
         }
 
         async function fetchCollection(collectionName, gridElement, renderFunction) {
